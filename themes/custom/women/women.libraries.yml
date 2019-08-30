@@ -1,0 +1,7 @@
+style:
+  css:
+    theme:
+      style.css: {}
+scripts:
+  js:
+    main.js: {}

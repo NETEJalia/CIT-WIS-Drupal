@@ -1,0 +1,423 @@
+{#
+/**
+ * @file
+ * Theme override for the basic structure of a single Drupal page.
+ *
+ * Variables:
+ * - logged_in: A flag indicating if user is logged in.
+ * - root_path: The root path of the current page (e.g., node, admin, user).
+ * - node_type: The content type for the current node, if the page is a node.
+ * - head_title: List of text elements that make up the head_title variable.
+ *   May contain one or more of the following:
+ *   - title: The title of the page.
+ *   - name: The name of the site.
+ *   - slogan: The slogan of the site.
+ * - page_top: Initial rendered markup. This should be printed before 'page'.
+ * - page: The rendered page markup.
+ * - page_bottom: Closing rendered markup. This variable should be printed after
+ *   'page'.
+ * - db_offline: A flag indicating if the database is offline.
+ * - placeholder_token: The token for generating head, css, js and js-bottom
+ *   placeholders.
+ *
+ * @see template_preprocess_html()
+ */
+#}
+{%
+  set body_classes = [
+    logged_in ? 'user-logged-in',
+    not root_path ? 'path-frontpage' : 'path-' ~ root_path|clean_class,
+    node_type ? 'page-node-type-' ~ node_type|clean_class,
+    db_offline ? 'db-offline',
+  ]
+%}
+<!DOCTYPE html>
+<html{{ html_attributes }}>
+  <head>
+    <head-placeholder token="{{ placeholder_token }}">
+    <title>{{ head_title|safe_join(' | ') }}</title>
+    <css-placeholder token="{{ placeholder_token }}">
+    <js-placeholder token="{{ placeholder_token }}">
+  </head>
+  <body{{ attributes.addClass(body_classes) }}>
+    {#
+      Keyboard navigation/accessibility link to main content section in
+      page.html.twig.
+    #}
+    <a href="#main-content" class="visually-hidden focusable skip-link">
+      {{ 'Skip to main content'|t }}
+    </a>
+    <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Women in Biomedical Careers</title>
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/main.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Martel|Playfair+Display&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flexslider/2.7.2/jquery.flexslider.min.js"></script>
+</head>
+
+<body>
+
+    <a href="#content" id="skip-nav">Skip Navigation Links</a>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item"><a href="#" class="nav-link">Women Scientists</a>
+                    <ul>
+                        <li><a href="#" class="nav-link">Programs and funding opportunity announcements</a></li>
+                        <li><a href="#" class="nav-link">Entry and Recruitment</a></li>
+                        <li><a href="#" class="nav-link">Re-entry</a></li>
+                        <li><a href="#" class="nav-link">Retention and Advancement</a></li>
+                        <li><a href="#" class="nav-link">Networking opportunities</a></li>
+                        <li><a href="#" class="nav-link">Mentoring</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item"><a href="#" class="nav-link">Professional Development</a>
+                    <ul>
+                        <li><a href="#" class="nav-link">Programs and funding opportunity announcements</a></li>
+                        <li><a href="#" class="nav-link">Entry and Recruitment</a></li>
+                        <li><a href="#" class="nav-link">Re-entry</a></li>
+                        <li><a href="#" class="nav-link">Retention and Advancement</a></li>
+                        <li><a href="#" class="nav-link">Networking opportunities</a></li>
+                        <li><a href="#" class="nav-link">Mentoring</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item"><a href="#" class="nav-link">Tools & Resources</a>
+                    <ul>
+                        <li><a href="#" class="nav-link">Programs and funding opportunity announcements</a></li>
+                        <li><a href="#" class="nav-link">Entry and Recruitment</a></li>
+                        <li><a href="#" class="nav-link">Re-entry</a></li>
+                        <li><a href="#" class="nav-link">Retention and Advancement</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item"><a href="#" class="nav-link">Newsroom</a>
+                    <ul>
+                        <li><a href="#" class="nav-link">Programs and funding opportunity announcements</a></li>
+                        <li><a href="#" class="nav-link">Entry and Recruitment</a></li>
+                        <li><a href="#" class="nav-link">Re-entry</a></li>
+                        <li><a href="#" class="nav-link">Retention and Advancement</a></li>
+                        <li><a href="#" class="nav-link">Networking opportunities</a></li>
+                        <li><a href="#" class="nav-link">Mentoring</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item"><a href="#" class="nav-link">About</a>
+                    <ul>
+                        <li><a href="#" class="nav-link">Programs and funding opportunity announcements</a></li>
+                        <li><a href="#" class="nav-link">Entry and Recruitment</a></li>
+                        <li><a href="#" class="nav-link">Re-entry</a></li>
+                        <li><a href="#" class="nav-link">Retention and Advancement</a></li>
+                        <li><a href="#" class="nav-link">Networking opportunities</a></li>
+                        <li><a href="#" class="nav-link">Mentoring</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div id="content">
+        <div class="jumbotron" style="background-image: url('/{{directory}}/images/header-bg.png')">
+            <div class="site-header">
+                <div class="site-title">
+                    <img src="/{{directory}}/images/NIH-white.png" alt="nih-brand">
+                    <div class="title-text">
+                    <div class="overall-title"><h1>National Institutes of Health</h></div>
+                    <div class="subtitle">Women in Biomedical Careers</div>
+                </div>
+            </div>
+            <div class="search">
+                <form>
+                    <input aria-label="searchbar" type="search">
+                    <button class="search-button" type="submit" id="query" autocomplete="off" placeholder="search">
+                        <i class="fa fa-search"></i>
+                        <span class="sr-only">Search Submit</span>
+                    </button>
+                </form>
+            </div>
+        </div><!-- site-header end -->
+        <div class="jumbo-content">
+            <div class="slider-container">
+                <div class="flexslider">
+                    <ul class="slides">
+                        <li>
+                            <div class="slide container-fluid">
+                                <div class="title">
+                                    Welcome to Women in Science!
+                                </div>
+                                <p>The NIH Working Group on Women in Biomedical Careers in a trans-NIH effort to consider barriers for women in science and to develop innovative strategies to promote entry, recruitment, retention, and sustained advancement of women in biomedical and research careers.</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="slide container-fluid">
+                                    <div class="title">
+                                        History of the Working Group
+                                    </div>
+                                    <p>In 2006, the National Academies report Beyond Bias and Barriers: Fulfilling the Potential of Women in Academic Science and Engineering found women in the biomedical sciences face institutional and environmental barriers to advancement at all career stages. The report called for broad, innovative action from universities, professional societies, and government funding agencies.</p>
+                                </div>
+                        </li>
+                        <li>
+                            <div class="slide container-fluid">
+                                    <div class="title">
+                                        Overview
+                                    </div>
+                                    <p>On July 25, 2016, the Committee on	Advancing Women in Independent Positions, a subcommittee of the NIH	Working Group on Women in Biomedical Careers, held	a Workshop on Advancing Women in Independent Positions to discuss efforts to enhance the advancement of women once they have achieved independent biomedical careers. Scientific societies and other organizations participated in the	conference to share information on successful initiatives and best practices.</p>
+                                </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="jumbo-subcontent">
+                <div class="box-container">
+                        <a href="#">
+                            <div class="box box-green">
+                                <img src="/{{directory}}/images/scientist-highlights.svg">
+                                <div class="box-title">Scientists Highlights</div>
+                            </div>
+                        </a>
+                        <a href="#">
+                            <div class="box box-fuschia">
+                                <img src="/{{directory}}/images/telescope.svg">
+                                <div class="box-title">
+                                    WoCRN
+                                </div>
+                            </div>
+                        </a>
+                    <a href="#">
+                        <div class="box box-orange">
+                            <img src="/{{directory}}/images/pearls-of-wisdom.svg">
+                            <div class="box-title">
+                                Pearls of Wisdom
+                            </div>
+                        </div>
+                   </a>
+                    <a href="#">
+                        <div class="box box-purple">
+                            <img src="/{{directory}}/images/funding.svg">
+                            <div class="box-title">
+                                Funding Opportunities
+                            </div>
+                        </div>
+                    </a>
+                </div><!-- end of box-container -->
+            </div>
+        </div><!-- end of jumbo-content -->
+        </div>
+    
+        <div class="jumbo-footer"></div><!-- keeps white space between jumbotron and content -->
+
+        <section class="banner-content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12 col-lg-7 my-auto">
+                        <div class="title blue">
+                            Our Mission
+                        </div>
+                        <p>In 2006, the National Academies report Beyond Bias and Barriers: Fulfilling the Potential of Women in Academic Science and Engineering found women in the biomedical sciences face institutional and environmental barriers to advancement at all career stages. The report called for broad, innovative action from universities, professional societies, and government funding agencies.</p>
+                
+                        <p>As a response to the report, then-NIH Director Elias A. Zerhouni, M.D., established the NIH Working Group on Women in Biomedical Careers in January 2007. He and others at NIH recognized that as one of the leaders in the biomedical community, NIH has an important role to play in removing barriers to success.</p>
+                                    
+                        <p>Dr. Zerhouni and Dr. Vivian W. Pinn, then-Associate Director for Research on Women’s Health and Director of the Office of Research on Women’s Health, served as the group’s first co-chairs. Initial efforts included national workshops on mentoring and best practices for sustained career success.</p>
+                    </div><!-- col-sm-10 end -->
+                <div class="col-12 col-lg-5 my-auto">
+                    <div class="newsletter">
+                        <div class="row">
+                            <div class="col-sm-12 col-xl-4 my-auto"><img alt="brochure" src="/{{directory}}/images/brochure.png"></div>
+                            <div class="col-sm-12 col-xl-8 my-auto">
+                                <div class="news-text">
+                                    <div class="secondary-title">Check Out Our Latest Newsletter!</div>
+                                        <button class="btn-primary">View Newsletter</button>
+                                        <p><a href="#">View past issues &rsaquo;</a></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- row end-->
+            </div><!-- banner-content end -->
+        </section>
+        <section class="banner-content blue-bg" style="background-image: url('/{{directory}}/images/microscope.png')">
+            <div class="container-fluid">
+                <div class="title white">
+                    Featured Scientists
+                </div>
+                <div class="row">
+                    <div class="col-12 col-md-4">
+                        <div class="scientist">
+                            <div class="secondary-title">
+                                Maria C. Freire, PH.D.
+                            </div>
+                            <div class="subtitle">
+                                NAM, 2008
+                            </div>
+                            <div class="row">
+                                <div class="col-12 col-xl-5">
+                                    <img alt="first-scientist" src="/{{directory}}/images/firstWoman.png">
+                                </div>
+                                <div class="col-12 col-xl-7">
+                                    <p>Dr. Freire is the former director of the NIH Office of Technology Transfer and the current president of the Foundation for the National Institutes of Health. She...</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-4">
+                        <div class="scientist">
+                            <div class="secondary-title">
+                                Vivian W. Pinn, M.D
+                            </div>
+                            <div class="subtitle">
+                                NAM, 1995
+                            </div>
+                            <div class="row">
+                                <div class="col-12 col-xl-5">
+                                    <img alt="second-scientist" src="/{{directory}}/images/secondWoman.png">
+                                </div>
+                                <div class="col-12 col-xl-7">
+                                    <p>Dr. Pinn is the first African-American woman to chair an academic pathology department in the United States at the Howard University College...</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div> 
+                    <div class="col-12 col-md-4">
+                        <div class="scientist">
+                            <div class="secondary-title">
+                                Ruth L. Kirschstein, M.D
+                            </div>
+                            <div class="subtitle">
+                                NAM, 1983
+                            </div>
+                            <div class="row">
+                                <div class="col-12 col-xl-5">
+                                    <img alt="third-scientist" src="/{{directory}}/images/thirdWoman.png">
+                                </div>
+                                <div class="col-12 col-xl-7">
+                                    <p>Dr. Kirschstein was the first woman to be appointed as the director of an Institute at the National Institutes of Health. She is the former director of the National...</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div> 
+                </div>
+            </div>
+        </section>
+        <section class="banner-content purple-bg" style="background-image: url('/{{directory}}/images/samplingScientist.png')">
+            <div class="container-fluid">
+                <div class="title purple">
+                    Find Resources For...
+                </div>
+                    <a href="#" class="resource">
+                        <img src="/{{directory}}/images/team.svg">
+                        <div class="resource-text">
+                                <div class="resource-head">
+                                    Intramural NIH
+                                </div>
+                            <p>Explore the resources offered to the NIH community</p>
+                        </div>
+                    </a>
+                    <a href='#' class="resource">
+                        <img src="/{{directory}}/images/team.svg">
+                        <div class="resource-text">
+                                <div class="resource-head">
+                                    Scientists Receiving NIH Funding
+                                </div>
+                            <p>Discover resources for scientists and researchers at institutions external to NIH</p>
+                        </div>
+                    </a>
+                    <a href="#" class="resource">
+                        <img src="/{{directory}}/images/team.svg">
+                        <div class="resource-text">
+                                <div class="resource-head">
+                                    Everyone
+                                </div>
+                            <p>Find resources for everyone to help promote change in the scientific community</p>
+                        </div>
+                    </a>
+                </div>
+        </section>
+        <section class="banner-content green-bg" style="background-image: url('/{{directory}}/images/molecules.png')">
+            <div class="container-fluid">
+                <div class="title white">
+                    Recent News
+                </div>
+                <div class="row">
+                    <div class="col-md-6 col-xl-3">
+                        <a href="#">
+                            <div class="test-tube img-bg" style="background-image: url('/{{directory}}/images/test-tube.jpg')">
+                                <div class="overlay-text">
+                                    Workshop on Advancing Women in Independent Positions
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-6 col-xl-3">
+                        <a href="#">
+                            <div class="lab img-bg" style="background-image: url('/{{directory}}/images/women-lab.jpg')">
+                                <div class="overlay-text">
+                                    Conference on Evidence-Based Innovations to Support Women in...
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-6 col-xl-3">
+                        <a href="#">
+                            <div class="gene img-bg" style="background-image: url('/{{directory}}/images/diversity.jpeg')">
+                                <div class="overlay-text">
+                                    National Institutes of Health addresses the science of diversity
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-6 col-xl-3">
+                        <a href="#">
+                            <div class="tech img-bg" style="background-image: url('/{{directory}}/images/woman-inject.jpeg')">
+                                <div class="overlay-text">
+                                    Keeping Scientists in Science: NIH Re-Issues Re-entry supplements...
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <div class="footer-container">
+            <nav>
+                <a href="#">Women Scientists</a>
+                <a href="#">Professional Development</a>
+                <a href="#">Tools & Resources</a>
+                <a href="#">Newsroom</a>
+                <a href="#">About</a>
+            </nav>
+            <nav>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Accessibility</a>
+                <a href="#">Disclaimers</a>
+                <a href="#">Freedom of Information Act</a>
+                <a href="#">Contact Us</a>
+            </nav>
+        </div>
+    </footer>
+
+    <a id="back-to-top" class="hidden-print">&#9650;<span id="back-to-top-tip">Back to Top</span></a>
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/main.min.js"></script>
+</body>
+</html>
+
+    <js-bottom-placeholder token="{{ placeholder_token }}">
+  </body>
+</html>

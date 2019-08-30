@@ -1,0 +1,11 @@
+name: Women in Science
+type: theme
+description: Custom theme for Women in Science Website Redesign
+package: Custom
+core: 8.x
+libraries:
+  - women/style
+  - women/scripts
+regions:
+  siteheader: Site Header
+  content: Content
